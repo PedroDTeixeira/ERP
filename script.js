@@ -1,9 +1,11 @@
 const submitButton = document.querySelector('#submit');
+const amountAccount = document.querySelector('#accCode1').value;
 
-// Attempt to clear the input text when Submitting the button
-
+let accounts = {account: 1}
+console.log(amountAccount)
+// Adding amounts to the object attempt
 submitButton.addEventListener('click', () => {
-    const testDiv = document.querySelector('.wrapper2');
-    const huahua = testDiv.querySelectorAll(':scope > div');
-
+    accounts.account = accounts.account + amountAccount || 1;
+    console.log(accounts.account)
+    document.querySelector('#accCode1').value = ''
 })
