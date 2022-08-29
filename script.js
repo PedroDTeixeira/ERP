@@ -17,8 +17,7 @@ submitButton.addEventListener('click', (e) => {
       accountsBalance.push(amountAccount);
       console.log(accountsBalance);
       jeAmount = '';
-      const totalSummarize = summarize();
-      console.log(totalSummarize);
+      console.log(summarize());
     } else {
       console.log(`Account ${accountCode} is not in the chart of accounts.`);
     }
