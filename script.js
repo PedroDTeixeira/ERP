@@ -8,7 +8,7 @@ let accountsBalance = []
 // Adding amounts to the object
 submitButton.addEventListener('click', (e) => {
   if (checkJournalNetZero() != 'JE not zero') {
-    addElement();
+    
     e.preventDefault();
     const accountCode = document.querySelector('#accCode1').value;
     let jeAmount = document.querySelector('#journalAmount').value;
@@ -26,6 +26,7 @@ submitButton.addEventListener('click', (e) => {
       }
     }
   } else (alert('Journal entry is not zero'));
+  addElement();
 })
 
 // Function that summarize the array
@@ -42,7 +43,7 @@ function addElement() {
   const newDiv = document.createElement("li");
 
   // and give it some content
-  const newContent = document.createTextNode("Hi there and greetings!");
+  const newContent = document.createTextNode(`${jeAmount1} ${accountCode}`);
 
   // add the text node to the newly created li
   newDiv.appendChild(newContent);
