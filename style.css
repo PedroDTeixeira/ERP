@@ -69,3 +69,11 @@
   grid-column: 2;
   grid-row: 4;
 }
+
+li {
+  font-family: 'Poppins', sans-serif;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+}

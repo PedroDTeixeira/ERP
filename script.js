@@ -1,6 +1,8 @@
 const submitButton = document.querySelector('#submit');
 const clearButton = document.querySelector('#clearSubmit');
 const journalInformation = document.querySelectorAll('#accCode1, #accDesc, #journalAmount, #accCode, #accDesc, #journalAmount2');
+let jeAmount = document.querySelector('#journalAmount').value;
+
 
 let accounts = ['0001000']
 let accountsBalance = []
