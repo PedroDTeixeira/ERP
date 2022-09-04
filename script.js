@@ -1,30 +1,27 @@
 const submitButton = document.querySelector('#submit');
 const clearButton = document.querySelector('#clearSubmit');
 const journalInformation = document.querySelectorAll('#accCode1, #accDesc, #journalAmount, #accCode, #accDesc, #journalAmount2');
-let jeAmount = document.querySelector('#journalAmount').value;
-
+const accountCode1 = document.querySelector('#accCode1').value;
+const accountCode2 = document.querySelector('#accCode2').value;
 
 let accounts = ['0001000']
 let accountsBalance = []
 
 // Adding amounts to the object
 submitButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  let jeAmount1 = +document.getElementById('journalAmount').value;
+  let jeAmount2 = +document.getElementById('journalAmount2').value;
   if (checkJournalNetZero() != 'JE not zero') {
-    
-    e.preventDefault();
-    const accountCode = document.querySelector('#accCode1').value;
-    let jeAmount = document.querySelector('#journalAmount').value;
-    if (!accountCode || !jeAmount) {
+    if (!accountCode1 ||!accountCode2 || !jeAmount1 || !jeAmount2) {
       console.log('Account number or amount missing');
     } else {
-      if (accounts.includes(accountCode) === true) {
-        const amountAccount = +jeAmount;
-        accountsBalance.push(amountAccount);
+      if (accounts.includes(accountCode1) === true || accounts.includes(accountCode1) === true) {
+        accountsBalance.push(jeAmount1);
         console.log(accountsBalance);
-        jeAmount = '';
         console.log(summarize());
       } else {
-        console.log(`Account ${accountCode} is not in the chart of accounts.`);
+        console.log(`Account ${accountCode1} or ${accountCode2} is not in the chart of accounts.`);
       }
     }
   } else (alert('Journal entry is not zero'));
@@ -45,7 +42,9 @@ function addElement() {
   const newDiv = document.createElement("li");
 
   // and give it some content
-  const newContent = document.createTextNode(`${jeAmount1} ${accountCode}`);
+  let jeAmount1 = +document.getElementById('journalAmount').value;
+  let jeAmount2 = +document.getElementById('journalAmount2').value;
+  const newContent = document.createTextNode(`${jeAmount1} ${accountCode1}`);
 
   // add the text node to the newly created li
   newDiv.appendChild(newContent);
@@ -58,11 +57,12 @@ function addElement() {
 
 // Checking if amounts are equal to zero (debits and credits have to net to zero)
 function checkJournalNetZero() {
-  let jeAmount1 = +document.querySelector('#journalAmount').value;
-  let jeAmount2 = +document.querySelector('#journalAmount2').value;
+  let jeAmount1 = +document.getElementById('journalAmount').value;
+  let jeAmount2 = +document.getElementById('journalAmount2').value;
   if (jeAmount1 + jeAmount2 != 0) {
     return 'JE not zero';
-}}
+  }
+}
 
 // Clear the fields in order to add another journal entry or to correct mistakes
 clearButton.addEventListener('click', (e) => {
