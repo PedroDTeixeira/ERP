@@ -24,6 +24,7 @@ submitButton.addEventListener('click', (e) => {
         console.log(accountsBalance);
         console.log(summarize());
         addElement();
+        clearJournalFields();
       } else {
         console.log(`Account ${accountCode1} or ${accountCode2} is not in the chart of accounts.`);
       }
@@ -80,7 +81,11 @@ function checkJournalNetZero() {
 // Clear the fields in order to add another journal entry or to correct mistakes
 clearButton.addEventListener('click', (e) => {
   e.preventDefault();
+  clearJournalFields();
+})
+
+function clearJournalFields() {
   journalInformation.forEach(journalInformation => {
     journalInformation.value = ''
   })
-})
+}
