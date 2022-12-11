@@ -89,3 +89,11 @@ function clearJournalFields() {
     journalInformation.value = ''
   })
 }
+
+const fs = require('fs')
+
+let data = "Testing Testing"
+
+fs.writeFile('Output.txt', data, (err) => {
+if (err) throw err;
+})
