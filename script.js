@@ -6,6 +6,7 @@ const journalInformation = document.querySelectorAll('#accCode1, #accDesc, #jour
 
 let accounts = ['0001000']
 let accountsBalance = []
+let voucherNumber = 0
 
 // Adding amounts to the object
 submitButton.addEventListener('click', (e) => {
@@ -18,16 +19,16 @@ submitButton.addEventListener('click', (e) => {
     if (!accountCode1 || !accountCode2 || !jeAmount1 || !jeAmount2) {
       console.log('Account number or amount missing');
     } else {
-      if (accounts.includes(accountCode1) === true || accounts.includes(accountCode1) === true) {
+      if (accounts.includes(accountCode1) === true) {
         accountsBalance.push(jeAmount1);
         console.log(accountsBalance);
         console.log(summarize());
+        addElement();
       } else {
         console.log(`Account ${accountCode1} or ${accountCode2} is not in the chart of accounts.`);
       }
     }
   } else (alert('Journal entry is not zero'));
-  addElement();
 })
 
 // Function that summarize the array
@@ -41,6 +42,9 @@ function summarize() {
 
 // What: Creates the journal entry details Why: All record history must to stored for accounting and analysis purposes
 function addElement() {
+  // adding a unit to the voucher number
+  voucherNumber += 1
+
   // create a new div element
   const newDiv1 = document.createElement("li");
   const newDiv2 = document.createElement("li");
@@ -50,8 +54,8 @@ function addElement() {
   const accountCode2 = document.querySelector('#accCode2').value;
   let jeAmount1 = +document.getElementById('journalAmount').value;
   let jeAmount2 = +document.getElementById('journalAmount2').value;
-  const newContent1 = document.createTextNode(`Account ${accountCode1} Amount ${jeAmount1}`);
-  const newContent2 = document.createTextNode(`Account ${accountCode2} Amount ${jeAmount2}`);
+  const newContent1 = document.createTextNode(`Account ${accountCode1} Amount ${jeAmount1} ${voucherNumber}`);
+  const newContent2 = document.createTextNode(`Account ${accountCode2} Amount ${jeAmount2} ${voucherNumber}`);
 
   // add the text node to the newly created li
   newDiv1.appendChild(newContent1);
